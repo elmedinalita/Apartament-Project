@@ -1,14 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Odbc;
-using System.Data.OleDb;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ApartamentiIm.Views
@@ -18,77 +8,72 @@ namespace ApartamentiIm.Views
         public TeDhenat()
         {
             InitializeComponent();
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = Users;
 
             // Add demo data
-            Users.Add(new User {
-                Id = 1,
-                Emri = "usdw",
-                Mbiemri = "usdw",
-                Hyrja = "usdw",
-                Dalja = "usdw",
-                Antaret = "usdw",
-                Kati = "usdw",
-                Qellimi = "usdw",
-                Kontakt = "usdw",
+            dataGridView1.Rows.Add(new[]{
+                "1",
+                "Emri1",
+                "Mbiemri1",
+                "Hyrja1",
+                "Dalja1",
+                "Antaret1",
+                "Kati1",
+                "Qellimi1",
+                "Kontakt1"
             });
-            Users.Add(new User
-            {
-                Id = 2,
-                Emri = "awewe",
-                Mbiemri = "awewe",
-                Hyrja = "awewe",
-                Dalja = "awewe",
-                Antaret = "awewe",
-                Kati = "usdw",
-                Qellimi = "awewe",
-                Kontakt = "usdw",
+            dataGridView1.Rows.Add(new[]{
+                "2",
+                "Emri2",
+                "Mbiemri2",
+                "Hyrja2",
+                "Dalja2",
+                "Antaret2",
+                "Kati2",
+                "Qellimi2",
+                "Kontakt2"
             });
         }
 
-        BindingList<User> Users = new BindingList<User>();
-
         private void button3_Click(object sender, EventArgs e)
         {
-            // Ndrysho
-            string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
-            var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
-            user.Id = int.Parse(textBox1.Text);
-            user.Emri = textBox2.Text;
-            user.Mbiemri = textBox3.Text;
-            user.Hyrja = textBox4.Text;
-            user.Dalja = textBox5.Text;
-            user.Antaret = textBox6.Text;
-            user.Kati = textBox7.Text;
-            user.Qellimi = textBox8.Text;
-            user.Kontakt = textBox9.Text;
-            dataGridView1.Refresh();
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Ju lutem shtoni te dhena!");
+                return; // Nese nuk kemi rreshta nuk kemi cfare te ndryshojme
+            }
+            dataGridView1.SelectedRows[0].Cells["Emri"].Value = textBox2.Text;
+            dataGridView1.SelectedRows[0].Cells["Mbiemri"].Value = textBox3.Text;
+            dataGridView1.SelectedRows[0].Cells["Hyrja"].Value = textBox4.Text;
+            dataGridView1.SelectedRows[0].Cells["Dalja"].Value = textBox5.Text;
+            dataGridView1.SelectedRows[0].Cells["Antaret"].Value = textBox6.Text;
+            dataGridView1.SelectedRows[0].Cells["Kati"].Value = textBox7.Text;
+            dataGridView1.SelectedRows[0].Cells["Qellimi"].Value = textBox8.Text;
+            dataGridView1.SelectedRows[0].Cells["Kontakt"].Value = textBox9.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Ruaj
-            Users.Add(new User {
-                Id = Users.Count + 1,
-                Emri = textBox2.Text,
-                Mbiemri = textBox3.Text,
-                Hyrja = textBox4.Text,
-                Dalja = textBox5.Text,
-                Antaret = textBox6.Text,
-                Kati = textBox7.Text,
-                Qellimi = textBox8.Text,
-                Kontakt = textBox9.Text
+            dataGridView1.Rows.Add(new[]{
+                (dataGridView1.Rows.Count + 1).ToString(),
+                textBox2.Text,
+                textBox3.Text,
+                textBox4.Text,
+                textBox5.Text,
+                textBox6.Text,
+                textBox7.Text,
+                textBox8.Text,
+                textBox9.Text
             });
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // Fshi
-            string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
-            var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
-            Users.Remove(user);
+            dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
 
+            // Nese nuk kemi me rreshta pastrojme textBoxes
+            if (dataGridView1.Rows.Count > 0)
+                return;
             // Reset textboxes
             textBox1.Text = "";
             textBox2.Text = "";
@@ -104,22 +89,17 @@ namespace ApartamentiIm.Views
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             // Update textBoxes on selection change
-            try
-            {
-                string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
-                var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
-
-                textBox1.Text = user.Id.ToString();
-                textBox2.Text = user.Emri;
-                textBox3.Text = user.Mbiemri;
-                textBox4.Text = user.Hyrja;
-                textBox5.Text = user.Dalja;
-                textBox6.Text = user.Antaret;
-                textBox7.Text = user.Kati;
-                textBox8.Text = user.Qellimi;
-                textBox9.Text = user.Kontakt;
-            }
-            catch { }
+            if (dataGridView1.Rows.Count == 0)
+                return; // Nese nuk kemi rreshta skemi cfare te dhena te shfaqim ne textBoxes.
+            textBox1.Text = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            textBox2.Text = dataGridView1.SelectedRows[0].Cells["Emri"].Value.ToString();
+            textBox3.Text = dataGridView1.SelectedRows[0].Cells["Mbiemri"].Value.ToString();
+            textBox4.Text = dataGridView1.SelectedRows[0].Cells["Hyrja"].Value.ToString();
+            textBox5.Text = dataGridView1.SelectedRows[0].Cells["Dalja"].Value.ToString();
+            textBox6.Text = dataGridView1.SelectedRows[0].Cells["Antaret"].Value.ToString();
+            textBox7.Text = dataGridView1.SelectedRows[0].Cells["Kati"].Value.ToString();
+            textBox8.Text = dataGridView1.SelectedRows[0].Cells["Qellimi"].Value.ToString();
+            textBox9.Text = dataGridView1.SelectedRows[0].Cells["Kontakt"].Value.ToString();
         }
     }
 }
