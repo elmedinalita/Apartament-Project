@@ -20,6 +20,8 @@ namespace ApartamentiIm.Views
             InitializeComponent();
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = Users;
+
+            // Add demo data
             Users.Add(new User {
                 Id = 1,
                 Emri = "usdw",
@@ -46,13 +48,10 @@ namespace ApartamentiIm.Views
         }
 
         BindingList<User> Users = new BindingList<User>();
-        private void TeDhenat_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Ndrysho
             string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
             var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
             user.Id = int.Parse(textBox1.Text);
@@ -64,11 +63,12 @@ namespace ApartamentiIm.Views
             user.Kati = textBox7.Text;
             user.Qellimi = textBox8.Text;
             user.Kontakt = textBox9.Text;
+            dataGridView1.Refresh();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Add
+            // Ruaj
             Users.Add(new User {
                 Id = Users.Count + 1,
                 Emri = textBox2.Text,
@@ -84,13 +84,26 @@ namespace ApartamentiIm.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Fshi
             string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
             var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
             Users.Remove(user);
+
+            // Reset textboxes
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
+            // Update textBoxes on selection change
             try
             {
                 string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
