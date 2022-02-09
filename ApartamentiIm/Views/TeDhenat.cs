@@ -18,51 +18,95 @@ namespace ApartamentiIm.Views
         public TeDhenat()
         {
             InitializeComponent();
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = Users;
+            Users.Add(new User {
+                Id = 1,
+                Emri = "usdw",
+                Mbiemri = "usdw",
+                Hyrja = "usdw",
+                Dalja = "usdw",
+                Antaret = "usdw",
+                Kati = "usdw",
+                Qellimi = "usdw",
+                Kontakt = "usdw",
+            });
+            Users.Add(new User
+            {
+                Id = 2,
+                Emri = "awewe",
+                Mbiemri = "awewe",
+                Hyrja = "awewe",
+                Dalja = "awewe",
+                Antaret = "awewe",
+                Kati = "usdw",
+                Qellimi = "awewe",
+                Kontakt = "usdw",
+            });
         }
 
+        BindingList<User> Users = new BindingList<User>();
         private void TeDhenat_Load(object sender, EventArgs e)
         {
-            LoadData();
-        }
 
-        string strCon = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + 
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data.accdb") + ";";
-        void LoadData()
-        {
-            // Load DB
-            dataGridView1.Columns.Clear();
-            string strSql = "select * from TeDhenat";
-
-            using (OdbcConnection con = new OdbcConnection(strCon))
-            using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSql, con))
-            {
-                DataTable table = new DataTable();
-                dadapter.Fill(table);
-
-                dataGridView1.DataSource = table;
-            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE TeDhenat SET Emri = '{textBox2.Text}' Mbiemri='{textBox3.Text}' Hyrja='{textBox4.Text}' Dalja='{textBox5.Text}' Antaret='{textBox6.Text}' Kati='{textBox7.Text}' Qellimi='{textBox8.Text}' Kontakt='{textBox9.Text}' WHERE ID = '{textBox1.Text}'";
+            string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
+            user.Id = int.Parse(textBox1.Text);
+            user.Emri = textBox2.Text;
+            user.Mbiemri = textBox3.Text;
+            user.Hyrja = textBox4.Text;
+            user.Dalja = textBox5.Text;
+            user.Antaret = textBox6.Text;
+            user.Kati = textBox7.Text;
+            user.Qellimi = textBox8.Text;
+            user.Kontakt = textBox9.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string query = $"INSERT INTO TeDhenat (Emri, Mbiemri, Hyrja, Dalja, Antaret, Kati, Qellimi, Kontakt) VALUES ('{textBox2.Text}', '{textBox3.Text}', '{textBox4.Text}', '{textBox5.Text}', '{textBox6.Text}', '{textBox7.Text}', '{textBox8.Text}', '{textBox9.Text}'";
-            using (var con = new OleDbConnection(strCon))
-            using (var command = new OleDbCommand(query, con))
-            {
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
+            // Add
+            Users.Add(new User {
+                Id = Users.Count + 1,
+                Emri = textBox2.Text,
+                Mbiemri = textBox3.Text,
+                Hyrja = textBox4.Text,
+                Dalja = textBox5.Text,
+                Antaret = textBox6.Text,
+                Kati = textBox7.Text,
+                Qellimi = textBox8.Text,
+                Kontakt = textBox9.Text
+            });
+        }
 
-                }
-                con.Open();
-                con.Close();
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+            var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
+            Users.Remove(user);
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selected = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
+                var user = Users.Where(u => u.Id.ToString() == selected).FirstOrDefault();
+
+                textBox1.Text = user.Id.ToString();
+                textBox2.Text = user.Emri;
+                textBox3.Text = user.Mbiemri;
+                textBox4.Text = user.Hyrja;
+                textBox5.Text = user.Dalja;
+                textBox6.Text = user.Antaret;
+                textBox7.Text = user.Kati;
+                textBox8.Text = user.Qellimi;
+                textBox9.Text = user.Kontakt;
             }
-            LoadData();
+            catch { }
         }
     }
 }

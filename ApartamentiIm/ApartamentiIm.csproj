@@ -54,7 +54,7 @@
       <DependentUpon>Members.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Users.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Kyqu.cs">
       <SubType>Form</SubType>
     </Compile>

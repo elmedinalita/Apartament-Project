@@ -12,14 +12,14 @@ namespace ApartamentiIm
         public static List<Client> clients = new List<Client>();
         public static void LoadUsers()
         {
-            User user1 = new User();
-            user1.Username = "elmedina";
-            user1.Password = "elmedina123";
-            user1.Firstname = "Elmeduna";
-            user1.Lastname = "Rexha";
-            user1.Email = "elmedina.lita@gmail.com";
-            user1.StatusId = 1;
-            users.Add(user1);
+            //User user1 = new User();
+            //user1.Username = "elmedina";
+            //user1.Password = "elmedina123";
+            //user1.Firstname = "Elmeduna";
+            //user1.Lastname = "Rexha";
+            //user1.Email = "elmedina.lita@gmail.com";
+            //user1.StatusId = 1;
+            //users.Add(user1);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace ApartamentiIm
         public Members()
         {
             InitializeComponent();
+            Apply(TeDhenat);
         }
         private void Members_FormClosing(object sender, FormClosingEventArgs e) => Environment.Exit(0);
         TeDhenat TeDhenat = new TeDhenat();
