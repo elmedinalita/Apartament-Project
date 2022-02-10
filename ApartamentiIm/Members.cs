@@ -23,7 +23,7 @@ namespace ApartamentiIm
         KatiBanues KatiBanues = new KatiBanues();
         Pagesa Pagesa = new Pagesa();
         Sherbimet Sherbimet = new Sherbimet();
-        Rregullimet Rregullimet = new Rregullimet();
+        public Rregullimet Rregullimet = new Rregullimet();
 
 
         #region Menu
@@ -51,7 +51,10 @@ namespace ApartamentiIm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Kyqu kyqu = new Kyqu();
+            Hide();
+            kyqu.ShowDialog();
+            Close();
         }
     }
 }

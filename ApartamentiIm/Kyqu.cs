@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApartamentiIm.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,10 +31,33 @@ namespace ApartamentiIm
         private void kyqubtn_Click(object sender, EventArgs e)
         {
             // Check info
+            var user = perdoruesibox.Text;
+            var pass = fjalekaimbox.Text;
+            if (!user.Contains("@") && !user.Contains(".com"))
+            {
+                MessageBox.Show("Perdoruesi nuk eshte i plote");
+                return;
+            }
+            if (pass.Length < 8)
+            {
+                MessageBox.Show("Passwordi duhet te permbaje te pakten 8 karaktere");
+                return;
+            }
+            // temp
+            //var usr = Program.Members.Rregullimet.Users.Where(u => u.Emri == user && u.Fjalkalimi == pass).FirstOrDefault();
+            foreach (var usr in Program.Users)
+            {
+                if (usr.Emri == user && usr.Fjalkalimi == pass)
+                {
+                    Hide();
+                    Members members = new Members();
+                    members.ShowDialog();
+                    Close();
+                    return;
+                }
+            }
 
-            Members members = new Members();
-            Hide();
-            members.ShowDialog();
+            MessageBox.Show("Te dhenat e pasakta");
         }
     }
 }

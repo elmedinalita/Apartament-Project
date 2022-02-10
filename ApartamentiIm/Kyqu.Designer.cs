@@ -43,7 +43,7 @@
             // 
             this.LoginBox.Image = ((System.Drawing.Image)(resources.GetObject("LoginBox.Image")));
             this.LoginBox.Location = new System.Drawing.Point(177, 46);
-            this.LoginBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoginBox.Margin = new System.Windows.Forms.Padding(4);
             this.LoginBox.Name = "LoginBox";
             this.LoginBox.Size = new System.Drawing.Size(205, 158);
             this.LoginBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -76,21 +76,23 @@
             // 
             // perdoruesibox
             // 
+            this.perdoruesibox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.perdoruesibox.Location = new System.Drawing.Point(256, 231);
-            this.perdoruesibox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.perdoruesibox.Margin = new System.Windows.Forms.Padding(4);
             this.perdoruesibox.Name = "perdoruesibox";
             this.perdoruesibox.Size = new System.Drawing.Size(185, 22);
             this.perdoruesibox.TabIndex = 4;
-            this.perdoruesibox.Text = "elmedina123\r\n\r\n";
+            this.perdoruesibox.Text = "User1@email.com";
             // 
             // fjalekaimbox
             // 
+            this.fjalekaimbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fjalekaimbox.Location = new System.Drawing.Point(256, 290);
-            this.fjalekaimbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fjalekaimbox.Margin = new System.Windows.Forms.Padding(4);
             this.fjalekaimbox.Name = "fjalekaimbox";
             this.fjalekaimbox.Size = new System.Drawing.Size(185, 22);
             this.fjalekaimbox.TabIndex = 5;
-            this.fjalekaimbox.Text = "12345";
+            this.fjalekaimbox.Text = "Pass123456";
             this.fjalekaimbox.UseSystemPasswordChar = true;
             // 
             // mbyllebtn
@@ -99,7 +101,7 @@
             this.mbyllebtn.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mbyllebtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.mbyllebtn.Location = new System.Drawing.Point(145, 377);
-            this.mbyllebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mbyllebtn.Margin = new System.Windows.Forms.Padding(4);
             this.mbyllebtn.Name = "mbyllebtn";
             this.mbyllebtn.Size = new System.Drawing.Size(100, 43);
             this.mbyllebtn.TabIndex = 6;
@@ -113,7 +115,7 @@
             this.kyqubtn.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kyqubtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.kyqubtn.Location = new System.Drawing.Point(296, 377);
-            this.kyqubtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kyqubtn.Margin = new System.Windows.Forms.Padding(4);
             this.kyqubtn.Name = "kyqubtn";
             this.kyqubtn.Size = new System.Drawing.Size(100, 43);
             this.kyqubtn.TabIndex = 7;
@@ -136,7 +138,7 @@
             this.Controls.Add(this.fjalekalimtxt);
             this.Controls.Add(this.LoginBox);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Kyqu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kyqu";

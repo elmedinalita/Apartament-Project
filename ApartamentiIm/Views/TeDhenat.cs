@@ -8,7 +8,6 @@ namespace ApartamentiIm.Views
         public TeDhenat()
         {
             InitializeComponent();
-
             // Add demo data
             dataGridView1.Rows.Add(new[]{
                 "1",
@@ -36,6 +35,7 @@ namespace ApartamentiIm.Views
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Ndrysho
             if (dataGridView1.Rows.Count == 0)
             {
                 MessageBox.Show("Ju lutem shtoni te dhena!");
@@ -53,6 +53,13 @@ namespace ApartamentiIm.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "" || textBox6.Text == "" ||
+                textBox7.Text == "" || textBox8.Text == "" || textBox9.Text == "")
+            {
+                MessageBox.Show("Ju lutem plotesoni te gjitha fushat.");
+                return;
+            }    
+            // Shto
             dataGridView1.Rows.Add(new[]{
                 (dataGridView1.Rows.Count + 1).ToString(),
                 textBox2.Text,
