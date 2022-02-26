@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,8 +111,14 @@
     <EmbeddedResource Include="Views\KatiBanues.resx">
       <DependentUpon>KatiBanues.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pagesa.resx">
+      <DependentUpon>Pagesa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Rregullimet.resx">
       <DependentUpon>Rregullimet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sherbimet.resx">
+      <DependentUpon>Sherbimet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TeDhenat.resx">
       <DependentUpon>TeDhenat.cs</DependentUpon>

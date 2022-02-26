@@ -13,23 +13,23 @@ namespace ApartamentiIm.Views
                 "1",
                 "Emri1",
                 "Mbiemri1",
-                "Hyrja1",
-                "Dalja1",
-                "Antaret1",
-                "Kati1",
+                "Kontakt1",
+                DateTime.Now.ToString("D"),
+                DateTime.Now.ToString("D"),
                 "Qellimi1",
-                "Kontakt1"
+                "Kati1",
+                "Antaret1",
             });
             dataGridView1.Rows.Add(new[]{
                 "2",
                 "Emri2",
                 "Mbiemri2",
-                "Hyrja2",
-                "Dalja2",
-                "Antaret2",
-                "Kati2",
+                "Kontakt2",
+                DateTime.Now.ToString("D"),
+                DateTime.Now.ToString("D"),
                 "Qellimi2",
-                "Kontakt2"
+                "Kati2",
+                "Antaret2",
             });
         }
 
@@ -41,35 +41,36 @@ namespace ApartamentiIm.Views
                 MessageBox.Show("Ju lutem shtoni te dhena!");
                 return; // Nese nuk kemi rreshta nuk kemi cfare te ndryshojme
             }
+            dataGridView1.SelectedRows[0].Cells["Id"].Value = textBox1.Text;
             dataGridView1.SelectedRows[0].Cells["Emri"].Value = textBox2.Text;
             dataGridView1.SelectedRows[0].Cells["Mbiemri"].Value = textBox3.Text;
-            dataGridView1.SelectedRows[0].Cells["Hyrja"].Value = textBox4.Text;
-            dataGridView1.SelectedRows[0].Cells["Dalja"].Value = textBox5.Text;
-            dataGridView1.SelectedRows[0].Cells["Antaret"].Value = textBox6.Text;
-            dataGridView1.SelectedRows[0].Cells["Kati"].Value = textBox7.Text;
-            dataGridView1.SelectedRows[0].Cells["Qellimi"].Value = textBox8.Text;
             dataGridView1.SelectedRows[0].Cells["Kontakt"].Value = textBox9.Text;
+            dataGridView1.SelectedRows[0].Cells["Hyrja"].Value = dateTimePicker1.Value.ToLongDateString();
+            dataGridView1.SelectedRows[0].Cells["Dalja"].Value = dateTimePicker2.Value.ToLongDateString();
+            dataGridView1.SelectedRows[0].Cells["Qellimi"].Value = textBox8.Text;
+            dataGridView1.SelectedRows[0].Cells["Kati"].Value = textBox5.Text;
+            dataGridView1.SelectedRows[0].Cells["Antaret"].Value = textBox6.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "" || textBox6.Text == "" ||
-                textBox7.Text == "" || textBox8.Text == "" || textBox9.Text == "")
+            if (textBox2.Text == "" || textBox3.Text == "" ||  textBox6.Text == "" ||
+                textBox8.Text == "" || textBox9.Text == "")
             {
                 MessageBox.Show("Ju lutem plotesoni te gjitha fushat.");
                 return;
-            }    
+            }
             // Shto
             dataGridView1.Rows.Add(new[]{
                 (dataGridView1.Rows.Count + 1).ToString(),
                 textBox2.Text,
                 textBox3.Text,
-                textBox4.Text,
+                textBox9.Text,
+                dateTimePicker1.Value.ToLongDateString(),
+                dateTimePicker2.Value.ToLongDateString(),
+                textBox8.Text,
                 textBox5.Text,
                 textBox6.Text,
-                textBox7.Text,
-                textBox8.Text,
-                textBox9.Text
             });
         }
 
@@ -85,10 +86,10 @@ namespace ApartamentiIm.Views
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
             textBox6.Text = "";
-            textBox7.Text = "";
+            textBox5.Text = "";
             textBox8.Text = "";
             textBox9.Text = "";
         }
@@ -101,12 +102,27 @@ namespace ApartamentiIm.Views
             textBox1.Text = dataGridView1.SelectedRows[0].Cells["Id"].Value.ToString();
             textBox2.Text = dataGridView1.SelectedRows[0].Cells["Emri"].Value.ToString();
             textBox3.Text = dataGridView1.SelectedRows[0].Cells["Mbiemri"].Value.ToString();
-            textBox4.Text = dataGridView1.SelectedRows[0].Cells["Hyrja"].Value.ToString();
-            textBox5.Text = dataGridView1.SelectedRows[0].Cells["Dalja"].Value.ToString();
-            textBox6.Text = dataGridView1.SelectedRows[0].Cells["Antaret"].Value.ToString();
-            textBox7.Text = dataGridView1.SelectedRows[0].Cells["Kati"].Value.ToString();
-            textBox8.Text = dataGridView1.SelectedRows[0].Cells["Qellimi"].Value.ToString();
             textBox9.Text = dataGridView1.SelectedRows[0].Cells["Kontakt"].Value.ToString();
+            dateTimePicker1.Value = DateTime.Parse(dataGridView1.SelectedRows[0].Cells["Hyrja"].Value.ToString());
+            dateTimePicker2.Value = DateTime.Parse(dataGridView1.SelectedRows[0].Cells["Dalja"].Value.ToString());
+            textBox8.Text = dataGridView1.SelectedRows[0].Cells["Qellimi"].Value.ToString();
+            textBox5.Text = dataGridView1.SelectedRows[0].Cells["Kati"].Value.ToString();
+            textBox6.Text = dataGridView1.SelectedRows[0].Cells["Antaret"].Value.ToString();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
